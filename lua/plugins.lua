@@ -11,6 +11,12 @@ end
 
 vim.cmd "packadd packer.nvim"
 
+local packer = require'packer'
+local util = require'packer.util'
+packer.init({
+    package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
+})
+
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use({
@@ -26,4 +32,8 @@ return require('packer').startup(function(use)
             require('feline').setup()
         end
     })
+    use {
+        'romgrk/barbar.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
 end)
