@@ -25,6 +25,13 @@ return require('packer').startup(function(use)
             require("onedarkpro").setup()
         end
     })
+    use {
+        'lewis6991/gitsigns.nvim',
+        -- tag = 'release' -- To use the latest release
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
     use({
         'feline-nvim/feline.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -35,5 +42,15 @@ return require('packer').startup(function(use)
     use {
         'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'}
+    }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
+        --tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        config = function()
+            require("nvim-tree").setup()
+        end
     }
 end)

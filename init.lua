@@ -9,7 +9,6 @@ vim.o.smartindent = true
 vim.o.expandtab = true
 
 -- Plugins settings
-require "plugins"
 vim.cmd("colorscheme onedarkpro")
 
 -- Keymap
@@ -19,4 +18,6 @@ local opts = { noremap = true, silent = true }
 map('n', '<Space>bc', '<Cmd>BufferClose<CR>', opts)
 map('n', '<Space>bp', '<Cmd>BufferPin<CR>', opts)
 map('n', '<Space>bk', '<Cmd>BufferPick<CR>', opts)
+
+map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
 
