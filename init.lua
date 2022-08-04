@@ -26,3 +26,5 @@ map('n', '<Space>fg', '<Cmd>Telescope live_grep<CR>', opts)
 map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
 
+map('n', '<Space>gl', '<Cmd>LazyGit<CR>', opts)
+

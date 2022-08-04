@@ -65,4 +65,7 @@ return require('packer').startup(function(use)
             require('telescope').setup()
         end
     }
+    use {
+        'kdheepak/lazygit.nvim',
+    }
 end)
