@@ -53,4 +53,16 @@ return require('packer').startup(function(use)
             require("nvim-tree").setup()
         end
     }
+    use {
+        'nvim-telescope/telescope.nvim',
+        -- or                            , branch = '0.1.x',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-treesitter/nvim-treesitter'},
+            {'kyazdani42/nvim-web-devicons'},
+        },
+        config = function()
+            require('telescope').setup()
+        end
+    }
 end)

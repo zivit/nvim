@@ -21,3 +21,8 @@ map('n', '<Space>bk', '<Cmd>BufferPick<CR>', opts)
 
 map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
 
+map('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', opts)
+map('n', '<Space>fg', '<Cmd>Telescope live_grep<CR>', opts)
+map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
+map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
+
