@@ -19,32 +19,23 @@ packer.init({
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use({
-        "olimorris/onedarkpro.nvim",
-        config = function()
+    use {"olimorris/onedarkpro.nvim", config = function()
             require("onedarkpro").setup()
         end
-    })
-    use {
-        'lewis6991/gitsigns.nvim',
-        -- tag = 'release' -- To use the latest release
-        config = function()
+    }
+    use {'lewis6991/gitsigns.nvim', config = function()
             require('gitsigns').setup()
         end
     }
-    use({
-        'feline-nvim/feline.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
+    use { 'feline-nvim/feline.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }, config = function()
             require('feline').setup()
         end
-    })
-    use {
-        'romgrk/barbar.nvim',
+    }
+    use {'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
-    use {
-        'kyazdani42/nvim-tree.lua',
+    use {'kyazdani42/nvim-tree.lua',
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icons
         },
@@ -53,8 +44,7 @@ return require('packer').startup(function(use)
             require("nvim-tree").setup()
         end
     }
-    use {
-        'nvim-telescope/telescope.nvim',
+    use {'nvim-telescope/telescope.nvim',
         -- or                            , branch = '0.1.x',
         requires = {
             {'nvim-lua/plenary.nvim'},
@@ -65,7 +55,8 @@ return require('packer').startup(function(use)
             require('telescope').setup()
         end
     }
-    use {
-        'kdheepak/lazygit.nvim',
-    }
+    use {'kdheepak/lazygit.nvim'}
+    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+        require("toggleterm").setup()
+    end}
 end)
