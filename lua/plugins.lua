@@ -59,4 +59,7 @@ return require('packer').startup(function(use)
     use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
         require("toggleterm").setup()
     end}
+    use {"folke/which-key.nvim", config = function()
+        require("which-key").setup()
+    end}
 end)
