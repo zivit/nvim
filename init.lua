@@ -53,3 +53,7 @@ map('n', '<Space>gl', '<Cmd>LazyGit<CR>', opts)
 map('n', '<Space>tt', '<Cmd>ToggleTerm<CR>', opts)
 map('n', '<Space>tf', '<Cmd>ToggleTerm direction=float<CR>', opts)
 map('n', '<Space>tb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
+
+-- Setup
+
+require'lspconfig'.clangd.setup{}
