@@ -84,7 +84,7 @@ vim.keymap.set('n', '<Space>lci', vim.lsp.buf.hover, bufopts)
 vim.keymap.set('n', '<Space>lsf', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<Space>lsl', vim.diagnostic.setloclist, opts)
 
-vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<F2>', '<cmd>lua require("renamer").rename()<cr>', bufopts)
 vim.keymap.set('n', '<F3>', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<F12>', vim.lsp.buf.definition, bufopts)
 

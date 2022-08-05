@@ -94,6 +94,12 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
+    use { 'filipdutescu/renamer.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} },
+        config = function()
+            require('renamer').setup()
+        end
+    }
     
     if packer_bootstrap then
         require('packer').sync()
