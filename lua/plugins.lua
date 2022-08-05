@@ -56,9 +56,11 @@ return require('packer').startup(function(use)
         end
     }
     use {'kdheepak/lazygit.nvim'}
-    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+    use {"akinsho/toggleterm.nvim", config = function()
         require("toggleterm").setup()
     end}
-    use {"folke/which-key.nvim"}
+    use {"folke/which-key.nvim", config = function()
+        require("which-key").setup {}
+    end}
     use {"neovim/nvim-lspconfig"}
 end)
