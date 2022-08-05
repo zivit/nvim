@@ -53,7 +53,50 @@ map('n', '<Space>gl', '<Cmd>LazyGit<CR>', opts)
 map('n', '<Space>tt', '<Cmd>ToggleTerm<CR>', opts)
 map('n', '<Space>tf', '<Cmd>ToggleTerm direction=float<CR>', opts)
 map('n', '<Space>tb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
+map('n', '<Space>tr', '<Cmd>TroubleToggle<CR>', opts)
+
+vim.keymap.set('n', '<space>lsf', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>lsl', vim.diagnostic.setloclist, opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>lwa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>lwr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>lwl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>ltd', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>lbr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>lca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>lcf', vim.lsp.buf.formatting, bufopts)
+end
 
 -- Setup
-require'lspconfig'.clangd.setup{}
+--local keybinds = require('lsp_config.keybinds')
 
+require('lspconfig').clangd.setup {
+    --on_attach = keybinds.on_attach,
+    cmd = {
+        "clangd",
+        "--compile-commands-dir=build/.cmake",
+        "--background-index",
+        "--suggest-missing-includes",
+        "-inlay-hints",
+    },
+    filetypes = {"c", "cpp", "objc", "objcpp"},
+}

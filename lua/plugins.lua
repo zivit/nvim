@@ -18,7 +18,8 @@ packer.init({
 })
 
 return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+    use {'wbthomason/packer.nvim',
+        run = ":PackerUpdate"}
     use {"olimorris/onedarkpro.nvim", config = function()
             require("onedarkpro").setup()
         end
@@ -39,13 +40,11 @@ return require('packer').startup(function(use)
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icons
         },
-        --tag = 'nightly' -- optional, updated every week. (see issue #1193)
         config = function()
             require("nvim-tree").setup()
         end
     }
     use {'nvim-telescope/telescope.nvim',
-        -- or                            , branch = '0.1.x',
         requires = {
             {'nvim-lua/plenary.nvim'},
             {'nvim-treesitter/nvim-treesitter'},
@@ -63,4 +62,16 @@ return require('packer').startup(function(use)
         require("which-key").setup {}
     end}
     use {"neovim/nvim-lspconfig"}
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+        }
+    end}
 end)
+
