@@ -9,6 +9,7 @@ vim.o.smartindent = true
 vim.o.expandtab = true
 
 -- Plugins settings
+require "plugins"
 vim.cmd("colorscheme onedarkpro")
 
 -- Keymap
@@ -55,10 +56,8 @@ map('n', '<Space>tf', '<Cmd>ToggleTerm direction=float<CR>', opts)
 map('n', '<Space>tb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
 map('n', '<Space>tr', '<Cmd>TroubleToggle<CR>', opts)
 
-vim.keymap.set('n', '<space>lsf', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>lsl', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -70,33 +69,151 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>lwa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>lwr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>lwl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  vim.keymap.set('n', '<space>ltd', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>lbr', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>lca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>lcf', vim.lsp.buf.formatting, bufopts)
 end
+
+vim.keymap.set('n', '<Space>lca', vim.lsp.buf.code_action, bufopts)
+vim.keymap.set('v', '<Space>lcf', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', bufopts)
+vim.keymap.set('n', '<Space>lci', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', '<Space>lsf', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<Space>lsl', vim.diagnostic.setloclist, opts)
+
+vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<F3>', vim.lsp.buf.references, bufopts)
+vim.keymap.set('n', '<F12>', vim.lsp.buf.definition, bufopts)
 
 -- Setup
 --local keybinds = require('lsp_config.keybinds')
+require'cmp'.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
 
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+-- The following example advertise capabilities to `clangd`.
+require'lspconfig'.clangd.setup {
+  
+}
 require('lspconfig').clangd.setup {
     --on_attach = keybinds.on_attach,
+    capabilities = capabilities,
     cmd = {
         "clangd",
         "--compile-commands-dir=build/.cmake",
         "--background-index",
         "--suggest-missing-includes",
-        "-inlay-hints",
+        "--inlay-hints",
     },
     filetypes = {"c", "cpp", "objc", "objcpp"},
 }
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+}
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "lua", "rust" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    disable = { },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●', -- Could be '●', '▎', 'x'
+  }
+})
+
+vim.cmd [[
+  highlight! DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
+  highlight! DiagnosticLineNrWarn guibg=#51412A guifg=#FFA500 gui=bold
+  highlight! DiagnosticLineNrInfo guibg=#1E535D guifg=#00FFFF gui=bold
+  highlight! DiagnosticLineNrHint guibg=#1E205D guifg=#0000FF gui=bold
+
+  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+  sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+  sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+  sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+]]
+
+

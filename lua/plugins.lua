@@ -2,14 +2,19 @@ local vim = vim
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
--- ensure that packer is installed
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-    execute 'packadd packer.nvim'
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.cmd [[packadd packer.nvim]]
 end
 
-vim.cmd "packadd packer.nvim"
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 local packer = require'packer'
 local util = require'packer.util'
@@ -18,8 +23,7 @@ packer.init({
 })
 
 return require('packer').startup(function(use)
-    use {'wbthomason/packer.nvim',
-        run = ":PackerUpdate"}
+    use {'wbthomason/packer.nvim'}
     use {"olimorris/onedarkpro.nvim", config = function()
             require("onedarkpro").setup()
         end
@@ -73,5 +77,13 @@ return require('packer').startup(function(use)
             require("trouble").setup {
         }
     end}
+    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+    use 'L3MON4D3/LuaSnip' -- Snippets plugin
+    
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
 
