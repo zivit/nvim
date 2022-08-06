@@ -25,14 +25,31 @@ packer.init({
 
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
-    use {"olimorris/onedarkpro.nvim", config = function()
-        require("onedarkpro").setup()
+    
+    use {"yamatsum/nvim-cursorline", config = function() 
+        require('nvim-cursorline').setup {
+            cursorline = {
+                enable = true,
+                timeout = 0,
+                number = true,
+            },
+            cursorword = {
+                enable = true,
+                min_length = 1,
+                hl = { bg = '#4d4d4d', underline = false },
+            }
+        }
     end}
     use {"Shatur/neovim-ayu", config = function()
         require("ayu").setup({
             mirage = true,
             overrides = {},
         })
+    end}
+    use {'navarasu/onedark.nvim', config = function()
+        require("onedark").setup {
+            -- style = 'warm'
+        }
     end}
     
     use {'lewis6991/gitsigns.nvim', config = function()
@@ -95,7 +112,14 @@ return require('packer').startup(function(use)
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("todo-comments").setup()
+            require("todo-comments").setup {
+                highlight = {
+                    pattern = [[.*<(KEYWORDS).*:]]
+                },
+                search = {
+                    pattern = [[\b(KEYWORDS).*:]]
+                }
+            }
     end}      
 
     use {'numToStr/Comment.nvim',
@@ -110,6 +134,20 @@ return require('packer').startup(function(use)
         end
     }
     use {'onsails/lspkind.nvim'}
+    use {"olimorris/onedarkpro.nvim", config = function()
+        require("onedarkpro").setup {
+            options = {
+                bold = true, -- Use the themes opinionated bold styles?
+                italic = false, -- Use the themes opinionated italic styles?
+                underline = true, -- Use the themes opinionated underline styles?
+                undercurl = true, -- Use the themes opinionated undercurl styles?
+                cursorline = true, -- Use cursorhighlight_line highlighting?
+                transparency = true, -- Use a transparent background?
+                terminal_colors = false, -- Use the theme's colors for Neovim's :terminal?
+                window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
+            }
+        }
+    end}
     
     if packer_bootstrap then
         require('packer').sync()

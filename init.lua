@@ -10,8 +10,9 @@ vim.o.expandtab = true
 
 -- Plugins settings
 require "plugins"
-vim.cmd("colorscheme onedarkpro")
---require('ayu').colorscheme()
+vim.cmd("colorscheme onedark")
+-- vim.cmd("colorscheme ayu-mirage")
+-- require('ayu').colorscheme()
 
 -- Keymap
 local map = vim.api.nvim_set_keymap
@@ -49,6 +50,7 @@ map('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', opts)
 map('n', '<Space>fg', '<Cmd>Telescope live_grep<CR>', opts)
 map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
+map('n', '<Space>ft', '<Cmd>TodoTelescope<CR>', opts)
 
 map('n', '<Space>gl', '<Cmd>LazyGit<CR>', opts)
 
@@ -57,8 +59,8 @@ map('n', '<Space>tf', '<Cmd>ToggleTerm direction=float<CR>', opts)
 map('n', '<Space>tb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
 map('n', '<Space>tr', '<Cmd>TroubleToggle<CR>', opts)
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev<cr>', opts)
+map('n', ']d', '<cmd>vim.diagnostic.goto_next<cr>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -69,25 +71,25 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<space>lwa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>lwr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>lwl', function()
+  map('n', 'gD', '<cmd>lua lsp.buf.declaration<cr>', bufopts)
+  map('n', 'K', '<cmd>lua lsp.buf.hover<cr>', bufopts)
+  map('n', 'gi', '<cmd>lua lsp.buf.implementation<cr>', bufopts)
+  map('n', '<space>lwa', '<cmd>lua lsp.buf.add_workspace_folder<cr>', bufopts)
+  map('n', '<space>lwr', '<cmd>lua lsp.buf.remove_workspace_folder<cr>', bufopts)
+  map('n', '<space>lwl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
 end
 
-vim.keymap.set('n', '<Space>lca', vim.lsp.buf.code_action, bufopts)
-vim.keymap.set('v', '<Space>lcf', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', bufopts)
-vim.keymap.set('n', '<Space>lci', vim.lsp.buf.hover, bufopts)
-vim.keymap.set('n', '<Space>lsf', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '<Space>lsl', vim.diagnostic.setloclist, opts)
+map('n', '<Space>lca', '<cmd>lua lsp.buf.code_action<cr>', opts)
+map('v', '<Space>lcf', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+map('n', '<Space>lci', '<cmd>lua lsp.buf.hover<cr>', opts)
+map('n', '<Space>lsf', '<cmd>lua diagnostic.open_float<cr>', opts)
+map('n', '<Space>lsl', '<cmd>lua diagnostic.setloclist<cr>', opts)
 
-vim.keymap.set('n', '<F2>', '<cmd>lua require("renamer").rename()<cr>', bufopts)
-vim.keymap.set('n', '<F3>', vim.lsp.buf.references, bufopts)
-vim.keymap.set('n', '<F12>', vim.lsp.buf.definition, bufopts)
+map('n', '<F2>', '<cmd>lua require("renamer").rename()<cr>', opts)
+map('n', '<F3>', '<cmd>Telescope lsp_references<cr>', opts)
+map('n', '<F12>', '<cmd>lua vim.lsp.buf.definition<cr>', opts)
 
 -- Setup
 --local keybinds = require('lsp_config.keybinds')
