@@ -59,6 +59,9 @@ return require('packer').startup(function(use)
             require('telescope').setup()
         end
     }
+    use {'chentoast/marks.nvim', config = function()
+        require('marks').setup()
+    end}
     use {'kdheepak/lazygit.nvim'}
     use {"akinsho/toggleterm.nvim", config = function()
         require("toggleterm").setup()
@@ -94,7 +97,7 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
-    use { 'filipdutescu/renamer.nvim',
+    use {'filipdutescu/renamer.nvim',
         requires = { {'nvim-lua/plenary.nvim'} },
         config = function()
             require('renamer').setup()
