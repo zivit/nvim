@@ -11,6 +11,7 @@ vim.o.expandtab = true
 -- Plugins settings
 require "plugins"
 vim.cmd("colorscheme onedarkpro")
+--require('ayu').colorscheme()
 
 -- Keymap
 local map = vim.api.nvim_set_keymap
@@ -216,4 +217,11 @@ vim.cmd [[
   sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
 ]]
 
+local cmp = require('cmp')
+local lspkind = require('lspkind')
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format(),
+  },
+}
 

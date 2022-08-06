@@ -26,9 +26,15 @@ packer.init({
 return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
     use {"olimorris/onedarkpro.nvim", config = function()
-            require("onedarkpro").setup()
-        end
-    }
+        require("onedarkpro").setup()
+    end}
+    use {"Shatur/neovim-ayu", config = function()
+        require("ayu").setup({
+            mirage = true,
+            overrides = {},
+        })
+    end}
+    
     use {'lewis6991/gitsigns.nvim', config = function()
             require('gitsigns').setup()
         end
@@ -67,7 +73,7 @@ return require('packer').startup(function(use)
         require("toggleterm").setup()
     end}
     use {"folke/which-key.nvim", config = function()
-        require("which-key").setup {}
+        require("which-key").setup{}
     end}
     use {"neovim/nvim-lspconfig"}
     use {
@@ -89,7 +95,7 @@ return require('packer').startup(function(use)
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("todo-comments").setup {}
+            require("todo-comments").setup()
     end}      
 
     use {'numToStr/Comment.nvim',
@@ -103,6 +109,7 @@ return require('packer').startup(function(use)
             require('renamer').setup()
         end
     }
+    use {'onsails/lspkind.nvim'}
     
     if packer_bootstrap then
         require('packer').sync()
