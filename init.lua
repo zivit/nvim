@@ -59,8 +59,8 @@ map('n', '<Space>tf', '<Cmd>ToggleTerm direction=float<CR>', opts)
 map('n', '<Space>tb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
 map('n', '<Space>tr', '<Cmd>TroubleToggle<CR>', opts)
 
-map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev<cr>', opts)
-map('n', ']d', '<cmd>vim.diagnostic.goto_next<cr>', opts)
+map('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+map('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -71,25 +71,25 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  map('n', 'gD', '<cmd>lua lsp.buf.declaration<cr>', bufopts)
-  map('n', 'K', '<cmd>lua lsp.buf.hover<cr>', bufopts)
-  map('n', 'gi', '<cmd>lua lsp.buf.implementation<cr>', bufopts)
-  map('n', '<space>lwa', '<cmd>lua lsp.buf.add_workspace_folder<cr>', bufopts)
-  map('n', '<space>lwr', '<cmd>lua lsp.buf.remove_workspace_folder<cr>', bufopts)
+  map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', bufopts)
+  map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
+  map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
+  map('n', '<space>lwa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', bufopts)
+  map('n', '<space>lwr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', bufopts)
   map('n', '<space>lwl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
 end
 
-map('n', '<Space>lca', '<cmd>lua lsp.buf.code_action<cr>', opts)
-map('v', '<Space>lcf', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
-map('n', '<Space>lci', '<cmd>lua lsp.buf.hover<cr>', opts)
-map('n', '<Space>lsf', '<cmd>lua diagnostic.open_float<cr>', opts)
-map('n', '<Space>lsl', '<cmd>lua diagnostic.setloclist<cr>', opts)
+map('v', '<Space>lcf', '<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+map('n', '<Space>lca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+map('n', '<Space>lci', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', '<Space>lsf', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+map('n', '<Space>lsl', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
-map('n', '<F2>', '<cmd>lua require("renamer").rename()<cr>', opts)
-map('n', '<F3>', '<cmd>Telescope lsp_references<cr>', opts)
-map('n', '<F12>', '<cmd>lua vim.lsp.buf.definition<cr>', opts)
+map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
+map('n', '<F3>', '<Cmd>Telescope lsp_references()<CR>', opts)
+map('n', '<F12>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 
 -- Setup
 --local keybinds = require('lsp_config.keybinds')
