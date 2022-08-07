@@ -148,6 +148,8 @@ return require('packer').startup(function(use)
         require("nvim-autopairs").setup {} end
     }
     
+    use 'ggandor/lightspeed.nvim'
+
     if packer_bootstrap then
         require('packer').sync()
     end
