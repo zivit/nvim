@@ -46,11 +46,7 @@ return require('packer').startup(function(use)
             overrides = {},
         })
     end}
-    use {'navarasu/onedark.nvim', config = function()
-        require("onedark").setup {
-            -- style = 'warm'
-        }
-    end}
+    use {'navarasu/onedark.nvim'}
     
     use {'lewis6991/gitsigns.nvim', config = function()
             require('gitsigns').setup()

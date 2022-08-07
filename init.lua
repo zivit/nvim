@@ -10,9 +10,6 @@ vim.o.expandtab = true
 
 -- Plugins settings
 require "plugins"
-vim.cmd("colorscheme onedark")
--- vim.cmd("colorscheme ayu-mirage")
--- require('ayu').colorscheme()
 
 -- Keymap
 local map = vim.api.nvim_set_keymap
@@ -247,4 +244,14 @@ require("cmp").setup({
     end,
   },
 })
+
+-- Themes
+require("onedark").setup {
+    code_style = {
+        comments = 'none'
+    }
+}
+vim.cmd("colorscheme onedark")
+-- vim.cmd("colorscheme ayu-mirage")
+-- require('ayu').colorscheme()
 
