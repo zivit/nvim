@@ -88,7 +88,7 @@ map('n', '<Space>lsf', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 map('n', '<Space>lsl', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
-map('n', '<F3>', '<Cmd>Telescope lsp_references()<CR>', opts)
+map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
 map('n', '<F12>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 
 -- Setup
