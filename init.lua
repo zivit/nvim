@@ -44,8 +44,8 @@ map('n', '<Space>b0', '<Cmd>BufferLast<CR>', opts)
 
 map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
 
-map('n', '<Space>ff', '<Cmd>Telescope find_files<CR>', opts)
-map('n', '<Space>fg', '<Cmd>Telescope live_grep<CR>', opts)
+map('n', '<Space>ff', '<Cmd>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>', opts)
+map('n', '<Space>fg', '<Cmd>Telescope live_grep find_command=rg,--hidden,--files prompt_prefix=🔍<CR>', opts)
 map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
 map('n', '<Space>ft', '<Cmd>TodoTelescope<CR>', opts)
@@ -102,18 +102,16 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- The following example advertise capabilities to `clangd`.
-require'lspconfig'.clangd.setup {
-  
-}
 require('lspconfig').clangd.setup {
     --on_attach = keybinds.on_attach,
     capabilities = capabilities,
     cmd = {
         "clangd",
-        "--compile-commands-dir=build/.cmake",
+        -- "--compile-commands-dir=build/.cmake", --  NOTE: Using .clangd file instead of
         "--background-index",
         "--suggest-missing-includes",
         "--inlay-hints",
+        "--clang-tidy",
     },
     filetypes = {"c", "cpp", "objc", "objcpp"},
 }
