@@ -13,7 +13,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
 
@@ -23,7 +23,8 @@ packer.init({
     package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
 })
 
-return require('packer').startup(function(use)
+return require('packer').startup({function(use)
+
     use {'wbthomason/packer.nvim'}
     
     use {"yamatsum/nvim-cursorline", config = function() 
@@ -160,5 +161,8 @@ return require('packer').startup(function(use)
     if packer_bootstrap then
         require('packer').sync()
     end
-end)
+end,
+config = {
+    maxjobs = 4,
+}})
 
