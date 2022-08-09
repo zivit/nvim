@@ -9,6 +9,16 @@ vim.o.smartindent = true
 vim.o.expandtab = true
 vim.o.colorcolumn = 100
 
+vim.cmd[[
+    if exists("g:neovide")
+        let g:neovide_remember_window_size=1
+        let g:neovide_input_macos_alt_is_meta=0
+        let g:neovide_refresh_rate=60
+        " let g:neovide_fullscreen=1
+        set guifont=Fira\ Code:h11
+    endif
+]]
+
 -- Plugins settings
 require "plugins"
 
@@ -79,11 +89,12 @@ local on_attach = function(client, bufnr)
   end, bufopts)
 end
 
-map('v', '<Space>lcf', '<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+map('v', '<Space>f', '<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+
 map('n', '<Space>lca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 map('n', '<Space>lci', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-map('n', '<Space>lsf', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-map('n', '<Space>lsl', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+map('n', '<Space>ldi', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
+map('n', '<Space>ldl', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
 map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
@@ -114,6 +125,13 @@ require('lspconfig').clangd.setup {
         "--clang-tidy",
     },
     filetypes = {"c", "cpp", "objc", "objcpp"},
+}
+
+require'lspconfig'.cmake.setup{
+    capabilities = capabilities,
+}
+require'lspconfig'.rust_analyzer.setup{
+    capabilities = capabilities,
 }
 
 -- luasnip setup
