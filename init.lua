@@ -15,7 +15,7 @@ vim.cmd[[
         let g:neovide_input_macos_alt_is_meta=0
         let g:neovide_refresh_rate=60
         " let g:neovide_fullscreen=1
-        set guifont=Fira\ Code:h11
+        set guifont=FuraCode\ Nerd\ Font:h11
     endif
 ]]
 
