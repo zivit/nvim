@@ -10,6 +10,11 @@ vim.o.expandtab = true
 vim.o.colorcolumn = 100
 vim.o.wrap = true
 
+require "plugins"
+require "setup.init"
+require "themes.init"
+require "shortcuts.keymap"
+
 vim.cmd[[
     colorscheme onedark
 
@@ -18,12 +23,7 @@ vim.cmd[[
         let g:neovide_input_macos_alt_is_meta=0
         let g:neovide_refresh_rate=60
         " let g:neovide_fullscreen=1
-        set guifont=FuraCode\ Nerd\ Font:h11
+        set guifont=FuraCode\ Nerd\ Font:h10
     endif
 ]]
-
-require "plugins"
-require "setup.init"
-require "themes.init"
-require "shortcuts.keymap"
 
