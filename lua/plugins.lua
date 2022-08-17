@@ -52,6 +52,9 @@ return require('packer').startup {function(use)
     use {"windwp/nvim-autopairs"}
     use {"ggandor/lightspeed.nvim"}
     use {"startup-nvim/startup.nvim", requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}}
+    use {"mfussenegger/nvim-dap"}
+    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    use {"Shatur/neovim-cmake", requires = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap"}} 
 
     if packer_bootstrap then
         require('packer').sync()

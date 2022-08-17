@@ -48,6 +48,13 @@ map('n', '<Space>ll', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
 map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
+map('n', '<F4>', '<Cmd>CMake configure<CR>', opts)
+map('n', '<F5>', '<Cmd>CMake build_and_debug<CR>', opts)
+map('n', '<C-F5>', '<Cmd>DapContinue<CR>', opts)
+map('n', '<F8>', '<Cmd>DapToggleBreakpoint<CR>', opts)
+map('n', '<F9>', '<Cmd>DapStepInto<CR>', opts)
+map('n', '<F10>', '<Cmd>DapStepOut<CR>', opts)
+map('n', '<F11>', '<Cmd>DapStepOver<CR>', opts)
 map('n', '<F12>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 
 map('n', 'gf', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
