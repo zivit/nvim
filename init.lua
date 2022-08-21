@@ -9,6 +9,7 @@ vim.o.smartindent = true
 vim.o.expandtab = true
 vim.o.colorcolumn = 100
 vim.o.wrap = true
+vim.o.clipboard = "unnamedplus"
 
 require "plugins"
 require "setup.init"
