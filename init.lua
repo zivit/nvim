@@ -10,10 +10,11 @@ vim.o.expandtab = true
 vim.o.colorcolumn = 100
 vim.o.wrap = true
 vim.o.clipboard = "unnamedplus"
+vim.o.termguicolors = true
 
 require "plugins"
-require "setup.init"
-require "themes.init"
+require "setup"
+require "themes"
 require "shortcuts.keymap"
 
 vim.cmd[[

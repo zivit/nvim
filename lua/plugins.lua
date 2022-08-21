@@ -26,7 +26,8 @@ return require('packer').startup {function(use)
     use {'navarasu/onedark.nvim'}
     use {'lewis6991/gitsigns.nvim'}
     use {'feline-nvim/feline.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
-    use {'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }}
+    -- use {'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }}
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use {'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }}
     use {'nvim-telescope/telescope.nvim', requires = {
             {'nvim-lua/plenary.nvim'},
@@ -55,6 +56,9 @@ return require('packer').startup {function(use)
     use {"mfussenegger/nvim-dap"}
     use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
     use {"Shatur/neovim-cmake", requires = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap"}} 
+    use {"j-hui/fidget.nvim"}
+    use {"ray-x/lsp_signature.nvim"}
+    use {"lukas-reineke/indent-blankline.nvim"}
 
     if packer_bootstrap then
         require('packer').sync()

@@ -25,3 +25,5 @@ lspconfig.cmake.setup {
 lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
 }
+
+require("lsp_signature").setup()
