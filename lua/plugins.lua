@@ -25,7 +25,8 @@ return require('packer').startup {function(use)
     use {"Shatur/neovim-ayu"}
     use {'navarasu/onedark.nvim'}
     use {'lewis6991/gitsigns.nvim'}
-    use {'feline-nvim/feline.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+    use {'SmiteshP/nvim-gps', requires = {"nvim-treesitter/nvim-treesitter"}} 
     -- use {'romgrk/barbar.nvim', requires = { 'kyazdani42/nvim-web-devicons' }}
     use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     use {'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }}
