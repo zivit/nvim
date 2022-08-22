@@ -8,7 +8,7 @@ vim.o.shiftwidth = 4
 vim.o.smartindent = true
 vim.o.expandtab = true
 vim.o.colorcolumn = 100
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 
@@ -24,7 +24,6 @@ vim.cmd[[
         let g:neovide_remember_window_size=1
         let g:neovide_input_macos_alt_is_meta=0
         let g:neovide_refresh_rate=60
-        " let g:neovide_fullscreen=1
         set guifont=FuraCode\ Nerd\ Font:h10
     endif
 ]]
