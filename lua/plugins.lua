@@ -61,6 +61,7 @@ return require('packer').startup {function(use)
     use {"ray-x/lsp_signature.nvim"}
     use {"lukas-reineke/indent-blankline.nvim"}
     use {"petertriho/nvim-scrollbar", requires = {"kevinhwang91/nvim-hlslens"}}
+    use {"cappyzawa/trim.nvim"}
 
     if packer_bootstrap then
         require('packer').sync()
