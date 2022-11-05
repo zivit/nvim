@@ -27,6 +27,9 @@ map('n', '<Space>b8', '<Cmd>BufferLineGoToBuffer 8<CR>', opts)
 map('n', '<Space>b9', '<Cmd>BufferLineGoToBuffer 9<CR>', opts)
 map('n', '<Space>b0', '<Cmd>blast<CR>', opts)
 
+map('n', '<Space>cd', '<Cmd>Lspsaga show_line_diagnostics<CR>', opts)
+map('n', '<Space>cd', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
+
 map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
 
 map('n', '<Space>ff', '<Cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
@@ -35,6 +38,8 @@ map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
 map('n', '<Space>ft', '<Cmd>TodoTelescope<CR>', opts)
 
+map('n', '<Space>o', '<Cmd>LSoutlineToggle<CR>', opts)
+
 map('n', '<Space>tt', '<Cmd>ToggleTerm<CR>', opts)
 map('n', '<Space>tf', '<Cmd>ToggleTerm direction=float<CR>', opts)
 map('n', '<Space>tb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
@@ -42,11 +47,16 @@ map('n', '<Space>tr', '<Cmd>TroubleToggle<CR>', opts)
 
 map('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 map('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+map('n', '[e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+map('n', ']e', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+map('n', '[E', '<Cmd>lua require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
+map('n', ']E', '<Cmd>lua require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
 
 map('n', '<Space>lf', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 map('n', '<Space>ll', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
-map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
+-- map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
+map('n', '<F2>', '<Cmd>Lspsaga rename<CR>', opts)
 map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
 map('n', '<F4>', '<Cmd>CMake configure<CR>', opts)
 map('n', '<F5>', '<Cmd>CMake build_and_debug<CR>', opts)
@@ -58,14 +68,17 @@ map('n', '<F11>', '<Cmd>DapStepOver<CR>', opts)
 map('n', '<F12>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 
 map('n', 'gf', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-map('n', 'gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+-- map('n', 'gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+map('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
+map('n', 'ge', '<Cmd>Lspsaga peek_definition<CR>', opts)
 map('n', 'gs', '<Cmd>Telescope lsp_document_symbols<CR>', opts)
 map('n', 'gr', '<Cmd>Telescope lsp_references<CR>', opts)
-map('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+-- map('n', 'gh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', 'gh', '<Cmd>Lspsaga hover_doc<CR>', opts)
 map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 map('n', 'gl', '<Cmd>LazyGit<CR>', opts)
-map('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+-- map('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+map('n', 'ga', '<Cmd>Lspsaga code_action<CR>', opts)
 map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 map('v', '<Space>f', '<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
-

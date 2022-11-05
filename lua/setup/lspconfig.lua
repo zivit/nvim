@@ -26,4 +26,6 @@ lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
 }
 
+lspconfig.tsserver.setup {}
+
 require("lsp_signature").setup()
