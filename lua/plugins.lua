@@ -60,6 +60,7 @@ return require('packer').startup {function(use)
     use {"j-hui/fidget.nvim", requires = {"neovim/nvim-lspconfig"}}
     use {"ray-x/lsp_signature.nvim"}
     use {"lukas-reineke/indent-blankline.nvim"}
+    use {"kevinhwang91/nvim-hlslens", branch = "main"}
     use {"petertriho/nvim-scrollbar", requires = {"kevinhwang91/nvim-hlslens"}}
     use {"cappyzawa/trim.nvim"}
     use {"glepnir/lspsaga.nvim", branch = "main"}
