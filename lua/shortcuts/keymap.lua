@@ -33,7 +33,7 @@ map('n', '<Space>cd', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
 map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
 
 map('n', '<Space>ff', '<Cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
-map('n', '<Space>fg', '<Cmd>Telescope live_grep prompt_prefix=🔍<CR>', opts)
+map('n', '<Space>fg', "<Cmd>execute 'Telescope live_grep prompt_prefix=🔍 default_text=' . expand('<cword>')<CR>", opts)
 map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
 map('n', '<Space>ft', '<Cmd>TodoTelescope<CR>', opts)
