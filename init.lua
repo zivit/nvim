@@ -10,6 +10,7 @@ vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.wrap = false
+vim.o.undofile = true
 
 vim.opt.colorcolumn = '100'
 
@@ -28,4 +29,3 @@ vim.cmd[[
         set guifont=FuraCode\ Nerd\ Font:h10
     endif
 ]]
-
