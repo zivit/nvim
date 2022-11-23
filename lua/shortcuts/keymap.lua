@@ -55,8 +55,8 @@ map('n', ']E', '<Cmd>lua require("lspsaga.diagnostic").goto_next({ severity = vi
 map('n', '<Space>lf', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
 map('n', '<Space>ll', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
--- map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
-map('n', '<F2>', '<Cmd>Lspsaga rename<CR>', opts)
+map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
+-- map('n', '<F2>', '<Cmd>Lspsaga rename<CR>', opts)
 map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
 map('n', '<F4>', '<Cmd>CMake configure<CR>', opts)
 map('n', '<F5>', '<Cmd>CMake build_and_debug<CR>', opts)
