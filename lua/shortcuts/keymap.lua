@@ -38,6 +38,9 @@ map('n', '<Space>fb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<Space>fh', '<Cmd>Telescope help_tags<CR>', opts)
 map('n', '<Space>ft', '<Cmd>TodoTelescope<CR>', opts)
 
+map('n', '<Space>m', '<Cmd>MarksListAll<CR>', opts)
+map('n', '<Space>b', '<Cmd>BookmarksListAll<CR>', opts)
+
 map('n', '<Space>o', '<Cmd>LSoutlineToggle<CR>', opts)
 
 map('n', '<Space>tt', '<Cmd>ToggleTerm<CR>', opts)
