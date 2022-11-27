@@ -14,6 +14,11 @@ vim.o.undofile = true
 
 vim.opt.colorcolumn = '100'
 
+vim.g.startup_bookmarks = {
+    ["A"] = '~/work/git/MON700-app/app_core_a',
+    ["N"] = '~/.config/nvim',
+}
+
 require "plugins"
 require "setup"
 require "themes"
