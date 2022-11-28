@@ -15,8 +15,10 @@ vim.o.undofile = true
 vim.opt.colorcolumn = '100'
 
 vim.g.startup_bookmarks = {
-    ["A"] = '~/work/git/MON700-app/app_core_a',
+    ["A"] = '~/work/git/MON700-app',
+    ["F"] = '~/work/git/MON700-FileSystem',
     ["N"] = '~/.config/nvim',
+    ["U"] = '~/work/git/uniport_com',
 }
 
 require "plugins"
