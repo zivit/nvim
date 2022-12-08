@@ -1,6 +1,5 @@
 require("bufferline").setup{
     options = {
-        -- separator_style = "padded_slant",
         numbers = function(opts)
             return string.format('%s', opts.raise(opts.ordinal))
         end,
@@ -10,7 +9,7 @@ require("bufferline").setup{
             highlight = "Directory",
             -- text_align = "left"
         }},
-        diagnostics = "nvim_lsp"
+        diagnostics = "nvim_lsp",
+        separator_style = "slant",
     }
 }
-
