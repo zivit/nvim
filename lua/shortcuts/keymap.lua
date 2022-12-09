@@ -42,14 +42,12 @@ map('n', '<Space>c', '<Cmd>bdelete<CR>', opts)
 map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
 
 map('n', '<Space>f', '<Cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
-map('n', '<Space>Fg', "<Cmd>execute 'Telescope live_grep prompt_prefix=🔍 default_text=' . expand('<cword>')<CR>", opts)
-map('n', '<Space>Fb', '<Cmd>Telescope buffers<CR>', opts)
-map('n', '<Space>Fh', '<Cmd>Telescope help_tags<CR>', opts)
-map('n', '<Space>Ft', '<Cmd>TodoTelescope<CR>', opts)
+map('n', '<Space>F', "<Cmd>execute 'Telescope live_grep prompt_prefix=🔍 default_text=' . expand('<cword>')<CR>", opts)
 
 map('n', '<Space>m', '<Cmd>MarksListAll<CR>', opts)
 map('n', '<Space>o', '<Cmd>LSoutlineToggle<CR>', opts)
 map('n', '<Space>q', '<Cmd>quitall<CR>', opts)
+map('n', '<Space>t', '<Cmd>TodoTelescope<CR>', opts)
 map('n', '<Space>w', '<Cmd>write<CR>', opts)
 
 map('n', '<Space>zb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
