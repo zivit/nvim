@@ -1,5 +1,6 @@
 -- Main settings
 vim.o.clipboard = "unnamedplus"
+vim.o.colorcolumn = '100'
 vim.o.expandtab = true
 vim.o.mouse = 'a'
 vim.o.number = true
@@ -9,16 +10,15 @@ vim.o.smartindent = true
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.termguicolors = true
-vim.o.wrap = false
 vim.o.undofile = true
-
-vim.opt.colorcolumn = '100'
+vim.o.wrap = false
 
 vim.g.startup_bookmarks = {
     ["A"] = '~/work/git/MON700-app',
     ["F"] = '~/work/git/MON700-FileSystem',
     ["N"] = '~/.config/nvim',
     ["U"] = '~/work/git/uniport_com',
+    ["M"] = '~/work/git/MON700-modules',
 }
 
 require "plugins"

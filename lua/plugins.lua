@@ -66,6 +66,7 @@ return require('packer').startup {function(use)
     use {"petertriho/nvim-scrollbar", requires = {"kevinhwang91/nvim-hlslens"}}
     use {"cappyzawa/trim.nvim"}
     use {"glepnir/lspsaga.nvim", branch = "main"}
+    use {"ThePrimeagen/vim-be-good"}
 
     if packer_bootstrap then
         require('packer').sync()
