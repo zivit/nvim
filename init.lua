@@ -30,9 +30,12 @@ vim.cmd[[
     colorscheme onedark
 
     if exists("g:neovide")
+        " let g:neovide_background_color = '#BF4040'
         let g:neovide_remember_window_size=1
         let g:neovide_input_macos_alt_is_meta=0
         let g:neovide_refresh_rate=60
+        let g:neovide_refresh_rate_idle=5
+        let g:neovide_cursor_vfx_mode = "railgun"
         set guifont=FiraCode\ Nerd\ Font\ Mono:h10
     endif
 ]]

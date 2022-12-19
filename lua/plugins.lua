@@ -21,12 +21,14 @@ packer.init({
 
 return require('packer').startup {function(use)
     use {'wbthomason/packer.nvim'}
-    use {"yamatsum/nvim-cursorline"}
-    use {"Shatur/neovim-ayu"}
+
+    -- Themes
     use {'navarasu/onedark.nvim'}
+    use {"Shatur/neovim-ayu"}
+
+    use {"yamatsum/nvim-cursorline"}
     use {'lewis6991/gitsigns.nvim'}
     use {'kyazdani42/nvim-web-devicons'}
-    use {'nvim-tree/nvim-web-devicons'}
     use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
     use {'SmiteshP/nvim-gps', requires = {"nvim-treesitter/nvim-treesitter"}}
     use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
@@ -52,7 +54,6 @@ return require('packer').startup {function(use)
     use {"numToStr/Comment.nvim"}
     use {"filipdutescu/renamer.nvim", requires = "nvim-lua/plenary.nvim"}
     use {'onsails/lspkind.nvim'}
-    use {"olimorris/onedarkpro.nvim"}
     use {"windwp/nvim-autopairs"}
     use {"ggandor/lightspeed.nvim"}
     use {"startup-nvim/startup.nvim", requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}}
