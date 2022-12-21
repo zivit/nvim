@@ -2,6 +2,9 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Normal mode
+map('n', 'n', 'nzz', opts)
+map('n', 'N', 'Nzz', opts)
+
 map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
 map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
 map('n', '<F4>', '<Cmd>CMake configure<CR>', opts)
