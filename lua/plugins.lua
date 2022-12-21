@@ -68,6 +68,7 @@ return require('packer').startup {function(use)
     use {"cappyzawa/trim.nvim"}
     use {"glepnir/lspsaga.nvim", branch = "main"}
     use {"ThePrimeagen/vim-be-good"}
+    use {'akinsho/git-conflict.nvim', tag = "*", config = function() require('git-conflict').setup() end}
 
     if packer_bootstrap then
         require('packer').sync()
