@@ -48,7 +48,7 @@ map('n', '<Space>f', '<Cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
 map('n', '<Space>F', "<Cmd>execute 'Telescope live_grep prompt_prefix=🔍 default_text=' . expand('<cword>')<CR>", opts)
 
 map('n', '<Space>m', '<Cmd>MarksListAll<CR>', opts)
-map('n', '<Space>o', '<Cmd>LSoutlineToggle<CR>', opts)
+map('n', '<Space>o', '<Cmd>Lspsaga outline<CR>', opts)
 map('n', '<Space>q', '<Cmd>quitall<CR>', opts)
 map('n', '<Space>t', '<Cmd>TodoTelescope<CR>', opts)
 map('n', '<Space>w', '<Cmd>write<CR>', opts)
@@ -80,4 +80,4 @@ map('n', 'gs', '<Cmd>Telescope lsp_document_symbols<CR>', opts)
 map('n', 'gr', '<Cmd>Telescope lsp_references<CR>', opts)
 
 -- Visual mode
-map('v', '<Space>f', '<Esc><Cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+map('v', '<Space>f', '<Esc><Cmd>lua vim.lsp.buf.format{range = {}}<CR>', opts)
