@@ -23,27 +23,27 @@ return require('packer').startup {function(use)
     use {'wbthomason/packer.nvim'}
 
     -- Themes
-    use {'navarasu/onedark.nvim'}
+    use {"navarasu/onedark.nvim"}
     use {"Shatur/neovim-ayu"}
 
     use {"yamatsum/nvim-cursorline"}
-    use {'lewis6991/gitsigns.nvim'}
-    use {'kyazdani42/nvim-web-devicons'}
-    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
-    use {'SmiteshP/nvim-gps', requires = {"nvim-treesitter/nvim-treesitter"}}
-    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
-    use {'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }}
-    use {'nvim-telescope/telescope.nvim', requires = {
-            {'nvim-lua/plenary.nvim'},
-            {'kyazdani42/nvim-web-devicons'},
+    use {"lewis6991/gitsigns.nvim"}
+    use {"kyazdani42/nvim-web-devicons"}
+    use {"nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true }}
+    use {"SmiteshP/nvim-gps", requires = {"nvim-treesitter/nvim-treesitter"}}
+    use {"akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" }
+    use {"kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" }}
+    use {"nvim-telescope/telescope.nvim", requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"kyazdani42/nvim-web-devicons"},
         }
     }
-    use {'chentoast/marks.nvim'}
-    use {'kdheepak/lazygit.nvim'}
+    use {"chentoast/marks.nvim"}
+    use {"kdheepak/lazygit.nvim"}
     use {"akinsho/toggleterm.nvim"}
     use {"folke/which-key.nvim"}
     use {"neovim/nvim-lspconfig"}
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
     use {"hrsh7th/nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lsp"}
@@ -53,7 +53,7 @@ return require('packer').startup {function(use)
     use {"folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim"}
     use {"numToStr/Comment.nvim"}
     use {"filipdutescu/renamer.nvim", requires = "nvim-lua/plenary.nvim"}
-    use {'onsails/lspkind.nvim'}
+    use {"onsails/lspkind.nvim"}
     use {"windwp/nvim-autopairs"}
     use {"ggandor/lightspeed.nvim"}
     use {"startup-nvim/startup.nvim", requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}}
@@ -68,17 +68,24 @@ return require('packer').startup {function(use)
     use {"cappyzawa/trim.nvim"}
     use {"glepnir/lspsaga.nvim", branch = "main"}
     use {"ThePrimeagen/vim-be-good"}
-    use {'phaazon/mind.nvim',
-        branch = 'v2.2',
-        requires = { 'nvim-lua/plenary.nvim' },
+    use {"phaazon/mind.nvim",
+        branch = "v2.2",
+        requires = { "nvim-lua/plenary.nvim" },
         config = function()
-            require'mind'.setup()
+            require"mind".setup()
         end
     }
-    use {'akinsho/git-conflict.nvim', tag = "*", config = function() require('git-conflict').setup() end}
+    use {"akinsho/git-conflict.nvim", tag = "*"}
+    use {"norcalli/nvim-colorizer.lua"}
+    use {"kylechui/nvim-surround",
+        tag = "*",
+        config = function()
+            require("nvim-surround").setup()
+        end
+    }
 
     if packer_bootstrap then
-        require('packer').sync()
+        require("packer").sync()
     end
 end,
 config = {
