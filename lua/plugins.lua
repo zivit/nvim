@@ -84,6 +84,8 @@ return require('packer').startup {function(use)
     use {"kylechui/nvim-surround", tag = "*"}
     use {"stevearc/overseer.nvim"}
     use {"mrbjarksen/neo-tree-diagnostics.nvim", requires = "nvim-neo-tree/neo-tree.nvim"--[[ , module = "neo-tree.sources.diagnostics" ]]}
+    use {"rmagatti/auto-session"}
+    use {"kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async"}
 
     if packer_bootstrap then
         require("packer").sync()
