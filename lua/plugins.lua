@@ -13,6 +13,15 @@ vim.cmd([[
   augroup end
 ]])
 
+-- vim.api.nvim_create_autocmp("BufWritePost", {
+--     group = vim.api.nvim_create_augroup("packer_user_config", { clear = true }),
+--     pattern = "plugins.lua",
+--     callback = function()
+--         print("PackerUpdate")
+--
+--     end
+-- })
+
 local packer = require'packer'
 local util = require'packer.util'
 packer.init({
@@ -25,6 +34,7 @@ return require('packer').startup {function(use)
     -- Themes
     use {"navarasu/onedark.nvim"}
     use {"Shatur/neovim-ayu"}
+    --
 
     use {"yamatsum/nvim-cursorline"}
     use {"lewis6991/gitsigns.nvim"}
@@ -58,31 +68,22 @@ return require('packer').startup {function(use)
     use {"ggandor/lightspeed.nvim"}
     use {"startup-nvim/startup.nvim", requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}}
     use {"mfussenegger/nvim-dap"}
-    use {"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}
+    use {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap"}
     use {"Shatur/neovim-cmake", requires = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap"}}
-    use {"j-hui/fidget.nvim", requires = {"neovim/nvim-lspconfig"}}
+    use {"j-hui/fidget.nvim", requires = "neovim/nvim-lspconfig"}
     use {"ray-x/lsp_signature.nvim"}
     use {"lukas-reineke/indent-blankline.nvim"}
     use {"kevinhwang91/nvim-hlslens", branch = "main"}
-    use {"petertriho/nvim-scrollbar", requires = {"kevinhwang91/nvim-hlslens"}}
+    use {"petertriho/nvim-scrollbar", requires = "kevinhwang91/nvim-hlslens"}
     use {"cappyzawa/trim.nvim"}
     use {"glepnir/lspsaga.nvim", branch = "main"}
     use {"ThePrimeagen/vim-be-good"}
-    use {"phaazon/mind.nvim",
-        branch = "v2.2",
-        requires = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require"mind".setup()
-        end
-    }
+    use {"phaazon/mind.nvim", branch = "v2.2", requires = "nvim-lua/plenary.nvim"}
     use {"akinsho/git-conflict.nvim", tag = "*"}
     use {"norcalli/nvim-colorizer.lua"}
-    use {"kylechui/nvim-surround",
-        tag = "*",
-        config = function()
-            require("nvim-surround").setup()
-        end
-    }
+    use {"kylechui/nvim-surround", tag = "*"}
+    use {"stevearc/overseer.nvim"}
+    use {"mrbjarksen/neo-tree-diagnostics.nvim", requires = "nvim-neo-tree/neo-tree.nvim"--[[ , module = "neo-tree.sources.diagnostics" ]]}
 
     if packer_bootstrap then
         require("packer").sync()
