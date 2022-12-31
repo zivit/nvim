@@ -9,7 +9,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -87,6 +87,7 @@ return require('packer').startup {function(use)
     use {"rmagatti/auto-session"}
     use {"kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async"}
     use {"nguyenvukhang/nvim-toggler"}
+    use {"gaoDean/autolist.nvim"}
 
     if packer_bootstrap then
         require("packer").sync()
