@@ -71,7 +71,6 @@ return require('packer').startup {function(use)
     use {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap"}
     use {"Shatur/neovim-cmake", requires = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap"}}
     use {"j-hui/fidget.nvim", requires = "neovim/nvim-lspconfig"}
-    use {"ray-x/lsp_signature.nvim"}
     use {"lukas-reineke/indent-blankline.nvim"}
     use {"kevinhwang91/nvim-hlslens", branch = "main"}
     use {"petertriho/nvim-scrollbar", requires = "kevinhwang91/nvim-hlslens"}

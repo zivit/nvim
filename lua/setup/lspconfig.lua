@@ -39,4 +39,4 @@ lspconfig.vuels.setup {
     capabilities = capabilities,
 }
 
-require("lsp_signature").setup()
+lspconfig.sumneko_lua.setup {}
