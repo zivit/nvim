@@ -19,24 +19,15 @@ lspconfig.clangd.setup {
     filetypes = {"c", "cpp", "objc", "objcpp"},
 }
 
-lspconfig.cmake.setup {
-    capabilities = capabilities,
-}
-
-lspconfig.rust_analyzer.setup {
-    capabilities = capabilities,
-}
-
-lspconfig.tsserver.setup {
-    capabilities = capabilities,
-}
-
-lspconfig.jsonls.setup {
-    capabilities = capabilities,
-}
-
-lspconfig.vuels.setup {
-    capabilities = capabilities,
-}
-
+lspconfig.bashls.setup {}
+lspconfig.cmake.setup { capabilities = capabilities, }
+lspconfig.cssls.setup { capabilities = capabilities, }
+lspconfig.cssmodules_ls.setup {}
+lspconfig.html.setup { capabilities = capabilities, }
+lspconfig.jsonls.setup { capabilities = capabilities, }
+lspconfig.marksman.setup {}
+lspconfig.pylsp.setup {}
+lspconfig.rust_analyzer.setup { capabilities = capabilities, }
 lspconfig.sumneko_lua.setup {}
+lspconfig.tsserver.setup { capabilities = capabilities, }
+lspconfig.vuels.setup { capabilities = capabilities, }
