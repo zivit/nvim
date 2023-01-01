@@ -88,6 +88,8 @@ return require('packer').startup {function(use)
     use {"kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async"}
     use {"nguyenvukhang/nvim-toggler"}
     use {"gaoDean/autolist.nvim"}
+    use {"smjonas/live-command.nvim"}
+    use {"folke/noice.nvim", requires = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}}
 
     if packer_bootstrap then
         require("packer").sync()
