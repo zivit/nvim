@@ -43,10 +43,8 @@ map('n', '<Space>.', '<Cmd>bnext<CR>', opts)
 map('n', '<Space>b', '<Cmd>BookmarksListAll<CR>', opts)
 map('n', '<Space>c', '<Cmd>bdelete<CR>', opts)
 map('n', '<Space>e', '<Cmd>NvimTreeToggle<CR>', opts)
-
 map('n', '<Space>f', '<Cmd>Telescope find_files prompt_prefix=🔍<CR>', opts)
 map('n', '<Space>F', "<Cmd>execute 'Telescope live_grep prompt_prefix=🔍 default_text=' . expand('<cword>')<CR>", opts)
-
 map('n', '<Space>m', '<Cmd>MarksListAll<CR>', opts)
 map('n', '<Space>o', '<Cmd>Lspsaga outline<CR>', opts)
 map('n', '<Space>q', '<Cmd>quitall<CR>', opts)

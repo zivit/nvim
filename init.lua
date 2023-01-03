@@ -1,6 +1,7 @@
 -- Main settings
 vim.o.clipboard = "unnamedplus"
 vim.o.colorcolumn = '100'
+vim.o.cursorline = true
 vim.o.expandtab = true
 vim.o.mouse = 'a'
 vim.o.number = true
