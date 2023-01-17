@@ -3,10 +3,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lspconfig = require "lspconfig"
+local navic = require("nvim-navic")
 
 -- The following example advertise capabilities to `clangd`.
 lspconfig.clangd.setup {
-    --on_attach = keybinds.on_attach,
+    on_attach = function(client, bufnr)
+        navic.attach(client, bufnr)
+    end,
     capabilities = capabilities,
     cmd = {
         "clangd",
@@ -25,7 +28,7 @@ lspconfig.cssls.setup { capabilities = capabilities, }
 lspconfig.cssmodules_ls.setup {}
 lspconfig.html.setup { capabilities = capabilities, }
 lspconfig.jsonls.setup { capabilities = capabilities, }
-lspconfig.marksman.setup {}
+-- lspconfig.marksman.setup {}
 lspconfig.pylsp.setup {}
 lspconfig.rust_analyzer.setup { capabilities = capabilities, }
 lspconfig.sumneko_lua.setup {}

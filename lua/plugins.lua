@@ -1,24 +1,23 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd [[packadd packer.nvim]]
-  print "Cloning packer..."
+    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    print "Cloning packer..."
 end
 
 vim.cmd([[
-  augroup packer_user_config
+augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+augroup end
 ]])
 
--- vim.api.nvim_create_autocmp("BufWritePost", {
+-- vim.api.nvim_create_autocmd("BufWritePost", {
 --     group = vim.api.nvim_create_augroup("packer_user_config", { clear = true }),
 --     pattern = "plugins.lua",
 --     callback = function()
---         print("PackerUpdate")
---
+--         require("packer").sync()
 --     end
 -- })
 
@@ -40,7 +39,6 @@ return require('packer').startup {function(use)
     use {"lewis6991/gitsigns.nvim"}
     use {"kyazdani42/nvim-web-devicons"}
     use {"nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true }}
-    use {"SmiteshP/nvim-gps", requires = {"nvim-treesitter/nvim-treesitter"}}
     use {"akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" }
     use {"kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" }}
     use {"nvim-telescope/telescope.nvim", requires = {
@@ -89,6 +87,7 @@ return require('packer').startup {function(use)
     use {"smjonas/live-command.nvim"}
     use {"folke/noice.nvim", requires = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}}
     use {"nat-418/boole.nvim"}
+    use {"SmiteshP/nvim-navic", requires = {"neovim/nvim-lspconfig"}}
 
     if packer_bootstrap then
         require("packer").sync()
