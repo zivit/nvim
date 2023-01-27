@@ -4,6 +4,7 @@ local opts = { noremap = true, silent = true }
 -- Normal mode
 map('n', 'n', 'nzz', opts)
 map('n', 'N', 'Nzz', opts)
+map('n', '<A-Enter>', 'i<CR><Esc>', opts)
 
 map('n', '<F2>', '<Cmd>lua require("renamer").rename()<CR>', opts)
 map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
