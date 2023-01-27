@@ -36,6 +36,7 @@ return require('packer').startup {function(use)
     --
 
     use {"yamatsum/nvim-cursorline"}
+    use {"SmiteshP/nvim-navic", requires = {"neovim/nvim-lspconfig"}}
     use {"lewis6991/gitsigns.nvim"}
     use {"kyazdani42/nvim-web-devicons"}
     use {"nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true }}
@@ -87,7 +88,6 @@ return require('packer').startup {function(use)
     use {"smjonas/live-command.nvim"}
     use {"folke/noice.nvim", requires = {"MunifTanjim/nui.nvim", "rcarriga/nvim-notify"}}
     use {"nat-418/boole.nvim"}
-    use {"SmiteshP/nvim-navic", requires = {"neovim/nvim-lspconfig"}}
 
     if packer_bootstrap then
         require("packer").sync()

@@ -64,8 +64,8 @@ map('n', '<Space>zzl', '<Cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 map('n', '[d', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
 map('n', ']d', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
-map('n', '[e', '<Cmd>lua require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
-map('n', ']e', '<Cmd>lua require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
+map('n', '[e', '<Cmd>lua require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
+map('n', ']e', '<Cmd>lua require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
 
 map('n', 'ga', '<Cmd>Lspsaga code_action<CR>', opts)
 map('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
