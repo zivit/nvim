@@ -20,7 +20,7 @@ dap.configurations.cpp = {
         type = 'lldb',
         request = 'launch',
         program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
@@ -45,7 +45,7 @@ dap.configurations.cpp = {
 --
 dap.configurations.c = dap.configurations.cpp
 
-require('dap.ext.vscode').load_launchjs(nil, { cpp = {'c', 'cpp'} })
+require('dap.ext.vscode').load_launchjs(nil, { cpp = { 'c', 'cpp' } })
 
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -59,24 +59,24 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 local dap_breakpoint = {
-error = {
-  text = "🔴",
-  -- texthl = "LspDiagnosticsSignError",
-  -- linehl = "",
-  -- numhl = "",
-},
-rejected = {
-  text = "🐞",
-  -- texthl = "LspDiagnosticsSignHint",
-  -- linehl = "",
-  -- numhl = "",
-},
-stopped = {
-  text = "👉",
-  -- texthl = "LspDiagnosticsSignInformation",
-  -- linehl = "DiagnosticUnderlineInfo",
-  -- numhl = "LspDiagnosticsSignInformation",
-},
+    error = {
+        text = "🔴",
+        -- texthl = "LspDiagnosticsSignError",
+        -- linehl = "",
+        -- numhl = "",
+    },
+    rejected = {
+        text = "🐞",
+        -- texthl = "LspDiagnosticsSignHint",
+        -- linehl = "",
+        -- numhl = "",
+    },
+    stopped = {
+        text = "👉",
+        -- texthl = "LspDiagnosticsSignInformation",
+        -- linehl = "DiagnosticUnderlineInfo",
+        -- numhl = "LspDiagnosticsSignInformation",
+    },
 }
 
 vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)

@@ -5,11 +5,38 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lspconfig = require "lspconfig"
 local navic = require("nvim-navic")
 
+local on_attach = function(client, bufnr)
+    navic.attach(client, bufnr)
+
+    local map = vim.api.nvim_set_keymap
+    local opts = { noremap = true, silent = true }
+
+    map('n', '<Space>o', '<Cmd>Lspsaga outline<CR>', opts)
+    map('n', '<Space>zd', '<Cmd>Lspsaga show_line_diagnostics<CR>', opts)
+    map('n', '<Space>zd', '<Cmd>Lspsaga show_cursor_diagnostics<CR>', opts)
+    map('n', '[d', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+    map('n', ']d', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+    map('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
+    map('n', 'ga', '<Cmd>Lspsaga code_action<CR>', opts)
+    map('n', 'ge', '<Cmd>Lspsaga peek_definition<CR>', opts)
+    map('n', 'gh', '<Cmd>Lspsaga hover_doc<CR>', opts)
+
+    map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
+    map('n', '<F12>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    map('n', '[e', '<Cmd>lua require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
+    map('n', ']e', '<Cmd>lua require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>', opts)
+    map('n', 'gf', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    map('n', 'gs', '<Cmd>Telescope lsp_document_symbols<CR>', opts)
+    map('n', 'gr', '<Cmd>Telescope lsp_references<CR>', opts)
+
+    -- Visual mode
+    map('v', '<Space>f', '<Esc><Cmd>lua vim.lsp.buf.format{range = {}}<CR>', opts)
+end
+
 -- The following example advertise capabilities to `clangd`.
 lspconfig.clangd.setup {
-    on_attach = function(client, bufnr)
-        navic.attach(client, bufnr)
-    end,
+    on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
         "clangd",
@@ -19,18 +46,18 @@ lspconfig.clangd.setup {
         "--inlay-hints",
         "--clang-tidy",
     },
-    filetypes = {"c", "cpp", "objc", "objcpp"},
+    filetypes = { "c", "cpp", "objc", "objcpp" },
 }
 
-lspconfig.bashls.setup {}
-lspconfig.cmake.setup { capabilities = capabilities, }
-lspconfig.cssls.setup { capabilities = capabilities, }
-lspconfig.cssmodules_ls.setup {}
-lspconfig.html.setup { capabilities = capabilities, }
-lspconfig.jsonls.setup { capabilities = capabilities, }
--- lspconfig.marksman.setup {}
-lspconfig.pylsp.setup {}
-lspconfig.rust_analyzer.setup { capabilities = capabilities, }
-lspconfig.sumneko_lua.setup {}
-lspconfig.tsserver.setup { capabilities = capabilities, }
-lspconfig.vuels.setup { capabilities = capabilities, }
+lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.cssmodules_ls.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.pylsp.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.sumneko_lua.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities, }
+
