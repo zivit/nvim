@@ -65,7 +65,7 @@ return require('packer').startup { function(use)
                 [[%s/\s\+$//e]], -- remove unwanted spaces
                 -- [[%s/\($\n\s*\)\+\%$//]],  -- trim last line
                 [[%s/\%^\n\+//]], -- trim first line
-                [[%s/^\n$\n/\1/]] -- trim multiline without last line
+                -- [[%s/^\n$\n/\1/]] -- trim multiline without last line
             },
         }
     end }
