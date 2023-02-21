@@ -2,6 +2,11 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+
 local lspconfig = require "lspconfig"
 local navic = require("nvim-navic")
 
@@ -49,15 +54,23 @@ lspconfig.clangd.setup {
     filetypes = { "c", "cpp", "objc", "objcpp" },
 }
 
-lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.cssmodules_ls.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.pylsp.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.sumneko_lua.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities, }
 
+local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        capabilities = capabilities,
+        on_attach = on_attach
+    })
+end
+-- lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.cssmodules_ls.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.pylsp.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.sumneko_lua.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities, }
+--
