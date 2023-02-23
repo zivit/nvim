@@ -1,6 +1,5 @@
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
@@ -39,6 +38,14 @@ local on_attach = function(client, bufnr)
     map('v', '<Space>f', '<Esc><Cmd>lua vim.lsp.buf.format{range = {}}<CR>', opts)
 end
 
+local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        capabilities = capabilities,
+        on_attach = on_attach
+    })
+end
+
 -- The following example advertise capabilities to `clangd`.
 lspconfig.clangd.setup {
     on_attach = on_attach,
@@ -54,14 +61,6 @@ lspconfig.clangd.setup {
     filetypes = { "c", "cpp", "objc", "objcpp" },
 }
 
-
-local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-    require('lspconfig')[ls].setup({
-        capabilities = capabilities,
-        on_attach = on_attach
-    })
-end
 -- lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
 -- lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
 -- lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
