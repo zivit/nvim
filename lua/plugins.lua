@@ -35,6 +35,7 @@ return require('packer').startup { function(use)
     use { "Shatur/neovim-ayu" }
     --
 
+    use { "neovim/nvim-lspconfig" }
     use { "L3MON4D3/LuaSnip" }
     use { "Shatur/neovim-cmake", requires = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" } }
     use { "SmiteshP/nvim-navic", requires = { "neovim/nvim-lspconfig" } }
@@ -161,9 +162,9 @@ return require('packer').startup { function(use)
         end }
     use { "ggandor/lightspeed.nvim" }
     use { "glepnir/lspsaga.nvim", branch = "main", config = function() require("lspsaga").setup() end }
+    use { "hrsh7th/nvim-cmp" }
     use { "hrsh7th/cmp-buffer" }
     use { "hrsh7th/cmp-nvim-lsp" }
-    use { "hrsh7th/nvim-cmp" }
     use { "j-hui/fidget.nvim", requires = "neovim/nvim-lspconfig", config = function() require("fidget").setup() end }
     use { "kdheepak/lazygit.nvim" }
     use { "kevinhwang91/nvim-hlslens", branch = "main" }
@@ -185,7 +186,6 @@ return require('packer').startup { function(use)
             },
         }
     end }
-    use { "neovim/nvim-lspconfig" }
     use { "norcalli/nvim-colorizer.lua", config = function() require('colorizer').setup() end }
     use { "numToStr/Comment.nvim", config=function ()
         require('Comment').setup()
