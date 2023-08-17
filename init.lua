@@ -1,3 +1,16 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+	"git",
+	"clone",
+	"--filter=blob:none",
+	"https://github.com/folke/lazy.nvim.git",
+	"--branch=stable",
+	lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- Main settings
 vim.o.clipboard = "unnamedplus"
 vim.o.colorcolumn = '100'
@@ -31,11 +44,11 @@ end
 
 vim.diagnostic.config({
     virtual_text = {
-        prefix = '' -- Could be '●', '▎', 'x'
+        prefix = '' -- Could be '●', '▎', 'x'
     }
 })
 
-require "plugins"
+require("lazy").setup("plugins")
 require "setup"
 require "themes"
 require "shortcuts.keymap"

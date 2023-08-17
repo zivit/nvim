@@ -61,15 +61,25 @@ lspconfig.clangd.setup {
     filetypes = { "c", "cpp", "objc", "objcpp" },
 }
 
+lspconfig.qmlls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = {
+        "qmlls6",
+        -- "--build-dir "..vim.fn.getcwd(),
+    },
+    filetypes = { "qml", "qmljs" }
+}
+
 lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cssmodules_ls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.lua_ls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.pylsp.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.lua_ls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities, }
 --
