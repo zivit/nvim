@@ -190,8 +190,8 @@ return {
     { "kylechui/nvim-surround",      config = function() require("nvim-surround").setup() end },
     { "lewis6991/gitsigns.nvim",     config = function() require('gitsigns').setup() end },
     {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function() require("indent_blankline").setup { show_current_context = true, } end
+        "lukas-reineke/indent-blankline.nvim", main = "ibl",
+        config = function() require("ibl").setup() end
     },
     { "mfussenegger/nvim-dap" },
     {
