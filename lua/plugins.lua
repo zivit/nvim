@@ -166,7 +166,11 @@ return {
         branch = "main",
         config = function()
             require("lspsaga").setup()
-        end
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-tree/nvim-web-devicons'
+        }
     },
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-buffer" },
