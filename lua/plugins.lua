@@ -230,15 +230,18 @@ return {
     { "nvim-telescope/telescope.nvim", dependencies = { { "nvim-lua/plenary.nvim" }, { "kyazdani42/nvim-web-devicons" } } },
     {
         "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
+        build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup {
-                ensure_installed = { "c", "cpp", "rust", "cmake" },
+                ensure_installed = { "c", "cpp", "rust", "cmake", "markdown", "markdown_inline" },
                 sync_install = false,
                 auto_install = true,
                 highlight = {
                     enable = true,
                     -- additional_vim_regex_highlighting = true,
+                },
+                indent = {
+                    enable = true,
                 },
             }
         end

@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
     map('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', opts)
     map('n', 'ga', '<Cmd>Lspsaga code_action<CR>', opts)
     map('n', 'ge', '<Cmd>Lspsaga peek_definition<CR>', opts)
-    map('n', 'gh', '<Cmd>Lspsaga hover_doc<CR>', opts)
+    map('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
 
     map('n', '<F3>', '<Cmd>Telescope lsp_references<CR>', opts)
     map('n', '<F12>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
