@@ -258,7 +258,7 @@ return {
         dependencies = "nvim-lua/plenary.nvim",
         config = function() require("mind").setup() end
     },
-    { "rcarriga/nvim-dap-ui", dependencies = "mfussenegger/nvim-dap" },
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     {
         "rmagatti/auto-session",
         config = function()
