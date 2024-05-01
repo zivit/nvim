@@ -76,8 +76,12 @@ return {
     },
     {
         "folke/noice.nvim",
+        event = "VeryLazy",
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
         config = function()
+            require("notify").setup {
+                top_down = false,
+            }
             require("noice").setup {
                 views = {
                     cmdline_popup = {
@@ -187,7 +191,7 @@ return {
     },
     { "kdheepak/lazygit.nvim" },
     { "kevinhwang91/nvim-hlslens",   branch = "main" },
-    { "kevinhwang91/nvim-ufo",       dependencies = "kevinhwang91/promise-async" },
+    { "kevinhwang91/nvim-ufo", lazy = false, dependencies = "kevinhwang91/promise-async" },
     --  { "kyazdani42/nvim-tree.lua", dependencies = { "kyazdani42/nvim-web-devicons" },
     -- config = function() require("nvim-tree").setup() end },
     { "kyazdani42/nvim-web-devicons" },
