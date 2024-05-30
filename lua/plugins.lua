@@ -270,7 +270,7 @@ return {
         end
     },
     { "nvim-lualine/lualine.nvim",     dependencies = { "kyazdani42/nvim-web-devicons", opt = true } },
-    { "nvim-telescope/telescope.nvim", dependencies = { { "nvim-lua/plenary.nvim" }, { "kyazdani42/nvim-web-devicons" } } },
+    { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "BurntSushi/ripgrep" } },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
