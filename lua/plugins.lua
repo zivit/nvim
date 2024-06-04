@@ -169,7 +169,18 @@ return {
         "glepnir/lspsaga.nvim",
         branch = "main",
         config = function()
-            require("lspsaga").setup()
+            require("lspsaga").setup {
+                lightbulb = {
+                    enable = true, -- disables both
+                    sign = false,
+                    virtual_text = true, -- disables just the one at the end of the line
+                },
+                outline = {
+                    close_after_jump = true,
+                    detail = false,
+                    layout = 'float',
+                },
+            }
         end,
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
