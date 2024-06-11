@@ -50,7 +50,7 @@ map('n', '<Space>m', '<Cmd>MarksListAll<CR>', opts)
 map('n', '<Space>q', "<Cmd>lua local f = function() vim.cmd('NeoTreeRevealToggle') vim.cmd('quitall') end f()<CR>", opts)
 map('n', '<Space>p', '<Cmd>BufferLinePick<CR>', opts)
 map('n', '<Space>t', '<Cmd>ToggleTerm<CR>', opts)
-map('n', '<Space>T', '<Cmd>TroubleToggle<CR>', opts)
+map('n', '<Space>T', '<Cmd>Trouble diagnostics toggle<CR>', opts)
 map('n', '<Space>w', '<Cmd>write<CR>', opts)
 
 map('n', '<Space>zb', '<Cmd>ToggleTerm direction=tab<CR>', opts)
