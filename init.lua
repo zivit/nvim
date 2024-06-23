@@ -53,8 +53,13 @@ require "setup"
 require "themes"
 require "shortcuts.keymap"
 
+require('onedark').setup {
+    -- style = 'warm',
+}
+require('onedark').load()
+
 vim.cmd[[
-    colorscheme onedark
+    " colorscheme onedark
 
     if exists("g:neovide")
         " let g:neovide_background_color = '#BF4040'
@@ -63,6 +68,6 @@ vim.cmd[[
         let g:neovide_refresh_rate=60
         let g:neovide_refresh_rate_idle=5
         let g:neovide_cursor_vfx_mode = "railgun"
-        set guifont=FiraCode\ Nerd\ Font\ Mono:h10
+        set guifont=FiraCode\ Nerd\ Font\ Mono:h12
     endif
 ]]

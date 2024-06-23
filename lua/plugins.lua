@@ -1,7 +1,7 @@
 return {
     -- Themes
-    { "navarasu/onedark.nvim" },
-    { "Shatur/neovim-ayu" },
+    "navarasu/onedark.nvim",
+    "Shatur/neovim-ayu",
     --
     {
         "williamboman/mason.nvim",
@@ -9,9 +9,9 @@ return {
             require("mason").setup()
         end
     },
-    { "neovim/nvim-lspconfig" },
-    { "peterhoeg/vim-qml" },
-    { "L3MON4D3/LuaSnip" },
+    "neovim/nvim-lspconfig",
+    "peterhoeg/vim-qml",
+    "L3MON4D3/LuaSnip",
     { "Shatur/neovim-cmake",  dependencies = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" } },
     { "SmiteshP/nvim-navic",  dependencies = { "neovim/nvim-lspconfig" } },
     {
@@ -164,7 +164,7 @@ return {
             -- })
         end
     },
-    { "ggandor/lightspeed.nvim" },
+    "ggandor/lightspeed.nvim",
     {
         "glepnir/lspsaga.nvim",
         branch = "main",
@@ -187,9 +187,14 @@ return {
             'nvim-tree/nvim-web-devicons'
         }
     },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-nvim-lsp" },
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind-nvim",
     {
         "j-hui/fidget.nvim",
         tag = "legacy",
@@ -200,7 +205,7 @@ return {
             require("fidget").setup()
         end
     },
-    { "kdheepak/lazygit.nvim" },
+    "kdheepak/lazygit.nvim",
     { "kevinhwang91/nvim-hlslens",   branch = "main" },
     -- {
     --     "kevinhwang91/nvim-ufo",
@@ -251,7 +256,7 @@ return {
         "lukas-reineke/indent-blankline.nvim", main = "ibl",
         config = function() require("ibl").setup() end
     },
-    { "mfussenegger/nvim-dap" },
+    "mfussenegger/nvim-dap",
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
@@ -261,7 +266,7 @@ return {
             "MunifTanjim/nui.nvim",
         }
     },
-    { "mrbjarksen/neo-tree-diagnostics.nvim" },
+    "mrbjarksen/neo-tree-diagnostics.nvim",
     {
         "nat-418/boole.nvim",
         config = function()
@@ -300,7 +305,7 @@ return {
             }
         end
     },
-    { "onsails/lspkind.nvim" },
+    "onsails/lspkind.nvim",
     {
         "petertriho/nvim-scrollbar",
         dependencies = "kevinhwang91/nvim-hlslens",
@@ -325,7 +330,7 @@ return {
             }
         end
     },
-    { "saadparwaiz1/cmp_luasnip" },
+    "saadparwaiz1/cmp_luasnip",
     {
         "smjonas/live-command.nvim",
         config = function()
@@ -336,9 +341,7 @@ return {
             }
         end
     },
-    {
-        "slint-ui/vim-slint"
-    },
+    "slint-ui/vim-slint",
     {
         "startup-nvim/startup.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
