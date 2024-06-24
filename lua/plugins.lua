@@ -5,6 +5,7 @@ return {
     "marko-cerovac/material.nvim",
     "catppuccin/nvim",
     "folke/tokyonight.nvim",
+    "sainnhe/sonokai",
     {
         "navarasu/onedark.nvim",
         config = function()
@@ -390,6 +391,7 @@ return {
     },
     {
         "LintaoAmons/bookmarks.nvim",
+        lazy = false,
         tag = "v0.5.3",
         dependencies = {
             { "nvim-telescope/telescope.nvim" },
