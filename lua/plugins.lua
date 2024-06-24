@@ -392,4 +392,5 @@ return {
         }
     },
     "LintaoAmons/cd-project.nvim",
+    "Shadowsith/vim-ruby-autocomplete",
 }
