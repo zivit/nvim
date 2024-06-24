@@ -5,7 +5,6 @@ local luasnip = require 'luasnip'
 cmp.setup {
     window = {
         completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
             col_offset = -3,
             side_padding = 0,
         },
@@ -57,5 +56,6 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
+        { name = 'path' },
     },
 }

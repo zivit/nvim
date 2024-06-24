@@ -13,13 +13,6 @@ return {
                 code_style = {
                     comments = 'none'
                 },
-                colors = {
-                    bg2 = "#393f4a",
-                    bg3 = "#3b3f4c",
-                },
-                highlights = {
-                    ["Pmenu"] = { bg = '$bg3' },
-                },
             }
         end
     },

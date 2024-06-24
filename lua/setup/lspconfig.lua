@@ -73,6 +73,21 @@ lspconfig.qmlls.setup {
     filetypes = { "qml", "qmljs" }
 }
 
+lspconfig.solargraph.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { "solargraph", "stdio" },
+    filetypes = { "ruby" },
+    init_options = {
+        formatting = true
+    },
+    settings = {
+        solargraph = {
+            diagnostics = true
+        }
+    }
+}
+
 lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
@@ -81,10 +96,9 @@ lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.lua_ls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.pylsp.setup { on_attach = on_attach, capabilities = capabilities, }
--- lspconfig.ruby_lsp.setup { on_attach = on_attach, capabilities = capabilities, }
+lspconfig.ruby_rls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.slint_lsp.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.solargraph.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities, }
 --
