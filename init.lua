@@ -25,8 +25,25 @@ vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.undofile = true
-vim.o.wrap = false
+vim.o.wrap = true
 -- vim.opt.langmap = "йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\\;,є',ґ\\,яz,чx,сc,мv,иb,тn,ьm,ю.,./,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\\:,Є\\\",Ґ|,ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,№#"
+
+if vim.g.neovide then
+    vim.g.neovide_remember_window_size = 1
+    vim.g.neovide_input_macos_option_key_is_meta = 'only_left'
+    vim.g.neovide_refresh_rate = 60
+    vim.g.neovide_refresh_rate_idle = 5
+    vim.g.neovide_cursor_vfx_mode = "railgun"
+    vim.g.neovide_transparency = 0.7
+    vim.g.neovide_window_blurred = true
+    vim.g.neovide_floating_shadow = true
+    vim.g.neovide_floating_z_height = 10
+    vim.g.neovide_light_angle_degrees = 45
+    vim.g.neovide_light_radius = 5
+
+    vim.g.transparency = 0.8
+    vim.o.guifont = "FiraCode Nerd Font Mono:h12"
+end
 
 vim.g.startup_bookmarks = {
     ["A"] = '~/work/git/MON700-app',
@@ -50,24 +67,7 @@ vim.diagnostic.config({
 
 require("lazy").setup("plugins")
 require "setup"
-require "themes"
 require "shortcuts.keymap"
 
-require('onedark').setup {
-    -- style = 'warm',
-}
-require('onedark').load()
+vim.cmd("colorscheme onedark")
 
-vim.cmd[[
-    " colorscheme onedark
-
-    if exists("g:neovide")
-        " let g:neovide_background_color = '#BF4040'
-        let g:neovide_remember_window_size=1
-        let g:neovide_input_macos_alt_is_meta=0
-        let g:neovide_refresh_rate=60
-        let g:neovide_refresh_rate_idle=5
-        let g:neovide_cursor_vfx_mode = "railgun"
-        set guifont=FiraCode\ Nerd\ Font\ Mono:h12
-    endif
-]]

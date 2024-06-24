@@ -1,7 +1,27 @@
 return {
     -- Themes
-    "navarasu/onedark.nvim",
     "Shatur/neovim-ayu",
+    "rebelot/kanagawa.nvim",
+    "marko-cerovac/material.nvim",
+    "catppuccin/nvim",
+    "folke/tokyonight.nvim",
+    {
+        "navarasu/onedark.nvim",
+        config = function()
+            require("onedark").setup {
+                code_style = {
+                    comments = 'none'
+                },
+                colors = {
+                    bg2 = "#393f4a",
+                    bg3 = "#3b3f4c",
+                },
+                highlights = {
+                    ["Pmenu"] = { bg = '$bg3' },
+                },
+            }
+        end
+    },
     --
     {
         "williamboman/mason.nvim",
@@ -52,23 +72,23 @@ return {
             }
         end
     },
-    {
-        "chentoast/marks.nvim",
-        config = function()
-            require('marks').setup {
-                bookmark_1 = {
-                    sign = "⚑",
-                    virt_text = "Attention!",
-                    annotate = true,
-                },
-                bookmark_2 = {
-                    sign = "⚑",
-                    virt_text = "",
-                    annotate = false,
-                },
-            }
-        end
-    },
+    -- {
+    --     "chentoast/marks.nvim",
+    --     config = function()
+    --         require('marks').setup {
+    --             bookmark_1 = {
+    --                 sign = "⚑",
+    --                 virt_text = "Attention!",
+    --                 annotate = true,
+    --             },
+    --             bookmark_2 = {
+    --                 sign = "⚑",
+    --                 virt_text = "",
+    --                 annotate = false,
+    --             },
+    --         }
+    --     end
+    -- },
     {
         "filipdutescu/renamer.nvim",
         dependencies = "nvim-lua/plenary.nvim",
@@ -356,16 +376,25 @@ return {
         config = function()
             require('nvim-cursorline').setup {
                 cursorline = {
-                    enable = true,
+                    enable = false,
                     timeout = 0,
                     number = true,
                 },
                 cursorword = {
                     enable = true,
                     min_length = 1,
-                    hl = { bg = '#4d4d4d', underline = false },
+                    hl = { --[[ bg = '#4d4d4d', ]] underline = true },
                 }
             }
         end
     },
+    {
+        "LintaoAmons/bookmarks.nvim",
+        tag = "v0.5.3",
+        dependencies = {
+            { "nvim-telescope/telescope.nvim" },
+            { "stevearc/dressing.nvim" } -- optional: to have the same UI shown in the GIF
+        }
+    },
+    "LintaoAmons/cd-project.nvim",
 }

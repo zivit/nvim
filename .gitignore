@@ -1,3 +1,5 @@
 plugin
 
 lazy-lock.json
+bookmarks.db.json
+cd-project.nvim.json
