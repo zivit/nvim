@@ -34,14 +34,13 @@ if vim.g.neovide then
     vim.g.neovide_refresh_rate = 60
     vim.g.neovide_refresh_rate_idle = 5
     vim.g.neovide_cursor_vfx_mode = "railgun"
-    vim.g.neovide_transparency = 0.7
+    vim.g.neovide_transparency = 0.9
     vim.g.neovide_window_blurred = true
     vim.g.neovide_floating_shadow = true
     vim.g.neovide_floating_z_height = 10
     vim.g.neovide_light_angle_degrees = 45
     vim.g.neovide_light_radius = 5
 
-    vim.g.transparency = 0.8
     vim.o.guifont = "FiraCode Nerd Font Mono:h12"
 end
 
