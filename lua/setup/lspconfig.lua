@@ -96,9 +96,9 @@ lspconfig.html.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.jsonls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.lua_ls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.pylsp.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.ruby_rls.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.ruby_rls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.rust_analyzer.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.slint_lsp.setup { on_attach = on_attach, capabilities = capabilities, }
-lspconfig.tsserver.setup { on_attach = on_attach, capabilities = capabilities, }
+-- lspconfig.ts_ls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities, }
 --
