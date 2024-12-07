@@ -88,6 +88,7 @@ lspconfig.solargraph.setup {
     }
 }
 
+lspconfig.asm_lsp.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.bashls.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cmake.setup { on_attach = on_attach, capabilities = capabilities, }
 lspconfig.cssls.setup { on_attach = on_attach, capabilities = capabilities, }
